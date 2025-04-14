@@ -1,0 +1,28 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: simpletimeservice
+  namespace: default
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: simpletimeservice
+  template:
+    metadata:
+      labels:
+        app: simpletimeservice
+    spec:
+      containers:
+      - name: simpletimeservice
+        image: acrsimpletimeservice.azurecr.io/simpletimeservice:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000 
+        resources:
+          requests:
+            cpu: "250m"
+            memory: "512Mi"
+          limits:
+            cpu: "500m"
+            memory: "1Gi"
