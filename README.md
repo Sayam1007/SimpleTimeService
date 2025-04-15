@@ -5,7 +5,7 @@ The **SimpleTimeService** is a simple web-based microservice that provides the c
 
 The project structure includes three main components:
 1. **App**: Contains the Python code and Dockerfile to package the service into a container.
-2. **Terraform**: Contains Terraform code to create necessary resources in Azure, including an Azure Storage Account for remote backend storage.
+2. **Terraform**: Contains Terraform code to create necessary resources in Azure.
 3. **K8s**: Contains YAML files for deploying the microservice on Kubernetes.
 
 ## Project Structure
@@ -61,4 +61,23 @@ When using the AKS module, you might encounter an **API version issue**. This oc
 **Important Note**: This issue is **not a blocker** for the deployment process. Despite the API version warning, the AKS module continues to work correctly, and it successfully provisions the AKS cluster and its dependent resources without any impact on functionality.
 
 This API version issue needs to be fixed by the module's owner. However, it doesn't prevent the successful deployment of the AKS cluster, and it will not cause any deployment failures.
+
+# Running the Simple Time Service Docker Image
+
+To run the Docker image `sayam10/simpletimeservice`, follow these steps:
+
+### 1. Pull the Docker image
+
+```bash
+docker pull sayam10/simpletimeservice
+```
+
+### 2. Run the Docker image
+```bash
+docker run -d -p 8000:8000 sayam10/simpletimeservice
+```
+
+# Terraform: Plan and Apply (Subdirectory)
+
+Run `terraform plan` and `terraform apply` from terraform subdirectory and before that set your Azure subscription ID in aks module `vnet_subnet_id` variable in terraform.tfvars 
 
